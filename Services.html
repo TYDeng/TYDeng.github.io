@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="path/to/favicon.ico">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+        }
+        
+        .services-image-set {
+            background-color: #d3d3d3;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* nav part */
+        .navbar-custom {
+            background-color: #B23A3A;
+        }
+
+        .nav-item { 
+            margin: 0 10px;
+            font-size: 25px;
+            border-right: 2px solid Gold;
+            padding-right: 20px;
+        }
+
+        .nav-link {
+            color: gold;
+        }
+
+        /* Footer part */
+        .footer-info {
+            background-color: #B23A3A;
+            color: gold;
+            font-weight: bold;
+            padding: 20px 0;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .footer-info .footer-col {
+            border-right: 2px solid gold;
+            padding: 0 40px;
+        }
+
+        .footer-info .footer-col:last-child {
+            border-right: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm navbar-custom" role="navigation">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="index.html">
+        <img src="assets/Brand.jpg" alt="Brand Logo" height="50px" width="150">
+    </a>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">MENU</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">GALLERY</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">STAFF</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">SERVICES</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Shadow Smokehouse BBQ Services</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="serviceType">Services Type:</label>
+                    <select class="form-control" id="serviceType" onchange="updateServiceDetails()">
+                        <option value="tastingMenu">Chef's Tasting Menu</option>
+                        <option value="privateDining">Private Dining</option>
+                        <option value="cookingClasses">Cooking Classes</option>
+                        <option value="bbq">Shadow Smokehouse BBQ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="availableChefs">Available experts/chefs:</label>
+                    <ul class="list-group" id="availableChefs">
+                        <!-- Dynamic content -->
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Cost:</label>
+                    <input type="text" class="form-control" id="cost" placeholder="100$" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" rows="3" readonly>A multi-course meal curated by the chef, showcasing the best dishes and seasonal ingredients.</textarea>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="services-image-set">
+                services image sets
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Info -->
+<div class="container-fluid footer-info mt-3">
+    <div class="row text-left">
+        <div class="col-md-4 footer-col">
+            <p><i class="bi bi-geo-alt-fill"></i> Address:<br>123 Example Street<br>Ottawa, Ontario, Example Post Code</p>
+        </div>
+        <div class="col-md-4 footer-col">
+            <p>Contact:<br><i class="bi bi-telephone"></i> Tel: 613-123-345<br><i class="bi bi-envelope"></i> Email: ShadowBBQ@gmail.com</p>
+        </div>
+        <div class="col-md-4 footer-col">
+            <p><i class="bi bi-calendar"></i> Hours:<br>Monday-Friday: 11:30AM-8:00PM<br>Saturday-Sunday: 11:30AM-4:00PM</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    const serviceDetails = {
+        tastingMenu: {
+            chefs: ["Chef John Doe", "Chef Jane Smith"],
+            cost: "100$",
+            description: "A multi-course meal curated by the chef, showcasing the best dishes and seasonal ingredients."
+        },
+        privateDining: {
+            chefs: ["Chef Alice Brown", "Chef Bob White"],
+            cost: "150$",
+            description: "Exclusive private dining experience with personalized menu options."
+        },
+        cookingClasses: {
+            chefs: ["Chef Emily Green", "Chef David Black"],
+            cost: "80$",
+            description: "Interactive cooking classes with expert chefs, covering various cuisines and techniques."
+        },
+        bbq: {
+            chefs: ["Pitmaster Joe Black", "Pitmaster Sarah White"],
+            cost: "120$",
+            description: "A smoky and flavorful BBQ experience featuring slow-cooked meats, savory sides, and our signature sauces."
+        }
+    };
+
+    function updateServiceDetails() {
+        const serviceType = document.getElementById("serviceType").value;
+        const chefsList = document.getElementById("availableChefs");
+        const costField = document.getElementById("cost");
+        const descriptionField = document.getElementById("description");
+
+        // Clear current chefs list
+        chefsList.innerHTML = "";
+
+        // Update chefs list
+        serviceDetails[serviceType].chefs.forEach(chef => {
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = chef;
+            chefsList.appendChild(li);
+        });
+
+        // Update cost and description
+        costField.value = serviceDetails[serviceType].cost;
+        descriptionField.value = serviceDetails[serviceType].description;
+    }
+
+    // Initialize with default service type
+    document.addEventListener("DOMContentLoaded", updateServiceDetails);
+</script>
+</body>
+</html>
