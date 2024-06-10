@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* nav part */
+        .navbar-custom {
+            background-color: #B23A3A;
+        }
+
+        .nav-item { 
+            margin: 0 10px;
+            font-size: 25px;
+            border-right: 2px solid Gold;
+            padding-right: 20px;
+        }
+
+        .nav-link {
+            color: gold;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #c9302c;
+        }
+
+        .expert-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .expert-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /*Footer part*/
+        .footer-info {
+            background-color: #B23A3A;
+            color: gold;
+            font-weight: bold;
+            padding: 10px 0;
+            font-size: 20px;
+            width: 100%;
+        }
+
+        .footer-info .footer-col {
+            border-right: 2px solid gold;
+            padding: 0 40px;
+        }
+
+        .footer-info .footer-col:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-custom" role="navigation">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/Brand.jpg" alt="Brand Logo" height="50px" width="150">
+        </a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">MENU</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">GALLERY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Staff.html">STAFF</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Aboutus.html">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Services.html">SERVICES</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <form id="reservationForm" class="col-md-8">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control">
+                    <div id="user-greeting"></div>
+                </div>
+                <div class="form-group">
+                    <label for="party-size">Party size:</label>
+                    <select id="party-size" name="party-size" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">Phone number:</label>
+                    <input type="text" id="phone-number" name="phone-number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="experts">Experts:</label>
+                    <select id="experts" name="experts" class="form-control">
+                        <option value="expert1">John Doe</option>
+                        <option value="expert2">Alice Brown</option>
+                        <option value="expert2">Bob White</option>
+                        <option value="expert2">Emily Green</option>
+                    </select>
+                    <div id="expert-description" class="mt-2"></div>
+                </div>
+                <div class="form-group">
+                    <label for="services">Services:</label>
+                    <select id="services" name="services" class="form-control">
+                        <option value="service1">Chef's Tasting Menu</option>
+                        <option value="service2">Private Dining</option>
+                        <option value="service2">Cooking Classes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <select id="time" name="time" class="form-control">
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-danger submit-button" onclick="submitForm()">Submit</button>
+            </form>
+            <div class="expert-image col-md-4">
+                <img src="expert.jpg" alt="Expert's image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="footer-info text-center">
+        <div class="row text-left">
+            <div class="col-md-4 footer-col">
+                <p><i class="bi bi-geo-alt-fill"></i> Address:<br>123 Example Street<br>Ottawa, Ontario, Example Post Code</p>
+            </div>
+            <div class="col-md-4 footer-col">
+                <p>Contact:<br><i class="bi bi-telephone"></i> Tel: 613-123-345<br><i class="bi bi-envelope"></i> Email: ShadowBBQ@gmail.com</p>
+            </div>
+            <div class="col-md-4 footer-col">
+                <p><i class="bi bi-calendar"></i> Hours:<br>Monday-Friday: 11:30AM-8:00PM<br>Saturday-Sunday: 11:30AM-4:00PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Simulate fetching the user's name
+        const userName = "John Doe"; // This should be fetched from your backend or local storage
+        if (userName) {
+            document.getElementById('user-greeting').innerText = `Hi, ${userName}, please provide some information for reservation:`;
+        }
+
+        const experts = {
+            "expert1": "Expert 1 is a specialist in field X.",
+            "expert2": "Expert 2 is an expert in field Y."
+        };
+
+        document.getElementById('experts').addEventListener('change', function() {
+            const selectedExpert = this.value;
+            document.getElementById('expert-description').innerText = experts[selectedExpert];
+        });
+
+        function submitForm() {
+            const formData = $('#reservationForm').serializeArray();
+            console.log(formData);
+            alert('Form submitted successfully!');
+            // Here you can handle the form data as needed
+        }
+    </script>
+</body>
+</html>
