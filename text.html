@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Form</title>
+    <title>Reservation</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
     <style>
         /* nav part */
         .navbar-custom {
@@ -151,26 +153,26 @@
                 <div class="form-group">
                     <label for="experts">Experts:</label>
                     <select id="experts" name="experts" class="form-control">
-                        <option value="expert1">Expert 1</option>
-                        <option value="expert2">Expert 2</option>
+                        <option value="expert1">John Doe</option>
+                        <option value="expert2">Alice Brown</option>
+                        <option value="expert3">Bob White</option>
+                        <option value="expert4">Emily Green</option>
                     </select>
                     <div id="expert-description" class="mt-2"></div>
                 </div>
                 <div class="form-group">
                     <label for="services">Services:</label>
                     <select id="services" name="services" class="form-control">
-                        <option value="service1">Service 1</option>
-                        <option value="service2">Service 2</option>
+                        <option value="service1">Chef's Tasting Menu</option>
+                        <option value="service2">Private Dining</option>
+                        <option value="service3">Cooking Classes</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="time">Time:</label>
-                    <select id="time" name="time" class="form-control">
-                        <option value="morning">Morning</option>
-                        <option value="afternoon">Afternoon</option>
-                        <option value="evening">Evening</option>
-                    </select>
+                    <label for="time">Date:</label>
+                    <input type="text" id="time" name="time" class="form-control datepicker">
                 </div>
+                                
                 <button type="button" class="btn btn-danger submit-button" onclick="submitForm()">Submit</button>
             </form>
             <div class="expert-image col-md-4">
@@ -197,12 +199,17 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: '-3d'
+            });
+        });
+
         // Simulate fetching the user's name
-        const userName = "John Doe"; // This should be fetched from your backend or local storage
+        const userName = ""; // This should be fetched from your backend or local storage
         if (userName) {
             document.getElementById('user-greeting').innerText = `Hi, ${userName}, please provide some information for reservation:`;
         }
