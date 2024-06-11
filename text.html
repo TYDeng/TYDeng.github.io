@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
+    <!-- Bootstrap CSS and dependencies -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
     <style>
         /* nav part */
@@ -26,7 +34,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-image: url('background.jpg');
+            background-image: url('assets/background.webp');
             background-size: cover;
             display: flex;
             flex-direction: column;
@@ -42,13 +50,13 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
+            background-color: pink;
+            padding: 40px;
             border-radius: 8px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            width: 60%;
+            width: 100%;
         }
 
         .submit-button {
@@ -61,7 +69,7 @@
             padding: 10px;
             width: 100%;
         }
-
+        
         .submit-button:hover {
             background-color: #c9302c;
         }
@@ -126,7 +134,7 @@
 
     <div class="content">
         <div class="container">
-            <form id="reservationForm" class="col-md-8">
+            <form id="reservationForm" class="col-md">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" class="form-control">
@@ -140,6 +148,7 @@
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
+                        <option value=">5">>5</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -151,14 +160,13 @@
                     <input type="email" id="email" name="email" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="experts">Experts:</label>
-                    <select id="experts" name="experts" class="form-control">
+                    <label for="chefs">Chefs:</label>
+                    <select id="chefs" name="chefs" class="form-control">
                         <option value="expert1">John Doe</option>
                         <option value="expert2">Alice Brown</option>
                         <option value="expert3">Bob White</option>
                         <option value="expert4">Emily Green</option>
                     </select>
-                    <div id="expert-description" class="mt-2"></div>
                 </div>
                 <div class="form-group">
                     <label for="services">Services:</label>
@@ -169,15 +177,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="time">Date:</label>
-                    <input type="text" id="time" name="time" class="form-control datepicker">
+                    <input type="datetime-local">
                 </div>
-                                
+
                 <button type="button" class="btn btn-danger submit-button" onclick="submitForm()">Submit</button>
             </form>
-            <div class="expert-image col-md-4">
-                <img src="expert.jpg" alt="Expert's image">
-            </div>
         </div>
     </div>
 
@@ -185,51 +189,42 @@
     <div class="footer-info text-center">
         <div class="row text-left">
             <div class="col-md-4 footer-col">
-                <p><i class="bi bi-geo-alt-fill"></i> Address:<br>123 Example Street<br>Ottawa, Ontario, Example Post Code</p>
+                <p><i class="fa fa-map-marker-alt"></i> Address:<br>123 Example Street<br>Ottawa, Ontario, Example Post Code</p>
             </div>
             <div class="col-md-4 footer-col">
-                <p>Contact:<br><i class="bi bi-telephone"></i> Tel: 613-123-345<br><i class="bi bi-envelope"></i> Email: ShadowBBQ@gmail.com</p>
+                <p>Contact:<br><i class="fa fa-phone"></i> Tel: 613-123-345<br><i class="fa fa-envelope"></i> Email: ShadowBBQ@gmail.com</p>
             </div>
             <div class="col-md-4 footer-col">
-                <p><i class="bi bi-calendar"></i> Hours:<br>Monday-Friday: 11:30AM-8:00PM<br>Saturday-Sunday: 11:30AM-4:00PM</p>
+                <p><i class="fa fa-clock"></i> Hours:<br>Monday-Friday: 11:30AM-8:00PM<br>Saturday-Sunday: 11:30AM-4:00PM</p>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.datepicker').datepicker({
-                format: 'mm/dd/yyyy',
-                startDate: '-3d'
-            });
-        });
+        $(function () {
+             $('#datetimepicker5').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm',
+                defaultDate: "06/9/2024 12:00",
+                startDate: '1d',
+             });
+         });
 
         // Simulate fetching the user's name
-        const userName = ""; // This should be fetched from your backend or local storage
+        const userName = ""; 
         if (userName) {
             document.getElementById('user-greeting').innerText = `Hi, ${userName}, please provide some information for reservation:`;
         }
 
-        const experts = {
-            "expert1": "Expert 1 is a specialist in field X.",
-            "expert2": "Expert 2 is an expert in field Y."
-        };
-
-        document.getElementById('experts').addEventListener('change', function() {
+        document.getElementById('chefs').addEventListener('change', function() {
             const selectedExpert = this.value;
-            document.getElementById('expert-description').innerText = experts[selectedExpert];
+            document.getElementById('expert-description').innerText = chefs[selectedExpert];
         });
 
         function submitForm() {
-            const formData = $('#reservationForm').serializeArray();
-            console.log(formData);
-            alert('Form submitted successfully!');
-            // Here you can handle the form data as needed
+        const formData = $('#reservationForm').serialize();
+            window.location.href = 'Confirmation.html?' + formData;
         }
+
     </script>
 </body>
 </html>
